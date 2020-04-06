@@ -1,3 +1,3 @@
 # Simple-Games
 
-A repository with simple games (Sudoku).
+A repository with simple games.
