@@ -41,14 +41,12 @@ def possible(row, col, test_num, grid):
     for i in range(square_num):
         if grid[i][col] == test_num:
             return False
-
     y = row // root * root
     x = col // root * root
     for i in range(root):
         for j in range(root):
             if grid[y + i][x + j] == test_num:
                 return False
-
     return True
 
 
@@ -81,7 +79,6 @@ class Grid:
                             self.grid[i][j] = 0
                         possible_nums.remove(test_num)
                     return
-        
         self.solution_count = self.solution_count + 1
         if self.solution_count == 1 and self.context == "Generate" or self.solution_count > 1:
             self.multi_sol = True
@@ -119,7 +116,6 @@ class Grid:
                 self.grid = copy.deepcopy(self.solved_grid)
                 self.solve()
                 self.multi_sol = False
-
             self.solved_grid[row_store][enum_to_remove - row_store * self.square_num] = last_store
             self.solution_count = 0
             self.grid[row_store][enum_to_remove - row_store * self.square_num] = last_store
@@ -128,7 +124,6 @@ class Grid:
             for col in row:
                 if col == 0:
                     self.missing_nums = self.missing_nums + 1
-
         print_grid(self.solved_grid)
         self.context = "Generate"
 
@@ -157,18 +152,14 @@ class Grid:
 if __name__ == "__main__":
     #print("Enter Grid Side Length (Square Number): ")
     #square_num = int(input())
-
     square_num = 9
     root = int(math.sqrt(square_num))
-
     print("Select Difficulty (Beginner, Easy, Medium, Hard):")
     difficulty = input()
-
     grid = Grid(difficulty, square_num, root)
     grid.solve()
     #print_grid(grid.grid)
     grid.new_puzzle()
-
     grid.add_num()
     grid.solve()
 
